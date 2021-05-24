@@ -1,13 +1,16 @@
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
+import { RoomSharp } from '@material-ui/icons';
 
 const API_KEY = process.env.REACT_APP_REST_API_KEY
 
 function AddressForm(props) {
 
     const [address, setAddress] = useState("")
+
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -25,9 +28,9 @@ function AddressForm(props) {
         axios.get(url)
             .then(response => {
                 const formated = response.data.results[0].geometry.location.lat + "," + response.data.results[0].geometry.location.lng
-                console.log(formated)
                 props.setLat(response.data.results[0].geometry.location.lat)
                 props.setLng(response.data.results[0].geometry.location.lng)
+                props.setZip(response.data.results[0].address_components[7].short_name)
                 props.setCoords(formated)
                 props.setHasAdd(true)
             }, error => {

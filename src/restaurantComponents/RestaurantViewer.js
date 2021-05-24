@@ -13,6 +13,7 @@ import { Map, TileLayer } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import MapMarker from './MapMarker'
 import { TextField } from '@material-ui/core';
+import { Link } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -223,6 +224,16 @@ function RestaurantViewer(props) {
         </FormControl>
         <TextField name='value' value={keyword} onChange={(event) => { setKeyword(event.target.value) }} placeholder={'search by keywords'} >
         </TextField>
+        {props.zip != "0" &&
+          <Button
+            variant="contained"
+            color="default"
+            className={classes.button}
+
+          >
+            <Link to={`/weather/${props.zip}`}> Check Weather Here </Link>
+
+          </Button>}
       </div>
       <div style={{ display: "flex", flexDirection: "row" }} >
         <div style={{ display: "flex", flex: 1, width: "50%", justifyContent: "center" }}>
