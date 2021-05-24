@@ -1,4 +1,4 @@
-import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 export default function HomeScreen() {
   return (
@@ -9,15 +9,21 @@ export default function HomeScreen() {
         style={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "center",
+          width: "100%",
+          justifyContent: "space-around",
+          alignItems: "space-between",
         }}
       >
-        <Button variant="contained" color="default">
-          Check Weather
-        </Button>
-        <Button variant="contained" color="default">
-          Look For Restaurants
-        </Button>
+        <div>
+          <Link style={{ fontSize: 25 }} to="/weather">
+            Check Weather
+          </Link>
+        </div>
+        <div>
+          <Link style={{ fontSize: 25 }} to="/restaurants">
+            Search For Restaurants
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import RestaurantViewer from "./RestaurantViewer";
 import AddressForm from "./AddressForm";
 import { useState } from "react";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
+import NavBar from "../NavBar.js";
 
 function App() {
   const [hasAdd, setHasAdd] = useState(false);
@@ -15,6 +16,7 @@ function App() {
       className="root"
       style={{ backgroundColor: "beige", minHeight: "100vh" }}
     >
+      <NavBar />
       <div
         style={{
           display: "flex",
