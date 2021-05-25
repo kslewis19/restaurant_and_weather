@@ -35,6 +35,7 @@ function App(props) {
     )
   });
   const classes = useStyles();
+
   useEffect(() => {
     if (lat != null) setHasAdd(true)
   }, [])
@@ -44,7 +45,7 @@ function App(props) {
 
     >
       <NavBar />
-      <div className="root"
+      <div
         style={{
           display: "flex",
           flexDirection: "row",

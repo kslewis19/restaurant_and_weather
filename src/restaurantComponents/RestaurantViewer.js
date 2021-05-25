@@ -28,14 +28,23 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline',
   },
   text: {
-    color: "white"
+    color: "grey",
+    '&:before': {
+      borderColor: "white",
+    },
+    '&:after': {
+      borderColor: "white",
+
+    }
   },
   input: {
     '& .MuiInputBase-root': {
       color: 'white',
     },
   },
-
+  icon: {
+    fill: "white",
+  },
 
 }));
 const API_KEY = process.env.REACT_APP_REST_API_KEY
@@ -195,7 +204,7 @@ function RestaurantViewer(props) {
       </Button>
         </div>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <FormControl className={classes.text}>
+      <FormControl >
           <InputLabel className={isDark && classes.text} htmlFor="age-native-simple">Type</InputLabel>
           <Select
             className={isDark && classes.text}
@@ -205,6 +214,10 @@ function RestaurantViewer(props) {
             inputProps={{
               name: 'age',
               id: 'age-native-simple',
+              classes: {
+                icon: isDark && classes.icon,
+                root: isDark && classes.text
+              },
             }}
           >
 
@@ -216,15 +229,19 @@ function RestaurantViewer(props) {
         </FormControl>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <FormControl >
-          <InputLabel className={isDark && classes.text} htmlFor="age-native-simple">Radius</InputLabel>
+          <InputLabel className={isDark && classes.text} htmlFor="miles-native-simple">Radius</InputLabel>
           <Select
             className={isDark && classes.text}
             native
             value={radius}
             onChange={(e) => { setRadius(e.target.value) }}
             inputProps={{
-              name: 'age',
-              id: 'age-native-simple',
+              name: 'miles',
+              id: 'miles-native-simple',
+              classes: {
+                icon: isDark && classes.icon,
+                root: isDark && classes.text
+              },
             }}
           >
 

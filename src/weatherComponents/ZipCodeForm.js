@@ -1,15 +1,27 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { ThemeContext } from "../ThemeContext"
+
+const useStyles = makeStyles((theme) => ({
+  input: {
+    '& .MuiInputBase-root': {
+      color: 'white',
+    },
+  },
 
 
-
+}));
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY
 
 function ZipCodeForm(props) {
 
   const [zip, setZip] = useState("")
+  const classes = useStyles();
+  const { isDark } = useContext(ThemeContext)
+
 
   useEffect(() => {
     if (props.zip != "0") fetchWeather(props.zip)
@@ -75,7 +87,7 @@ function ZipCodeForm(props) {
       <h1>Welcome to the Weather App!</h1>
       <h2> Please enter your zip code bellow:</h2>
       <form method="post" onSubmit={handleSubmit}>
-        <TextField name='value' value={zip} onChange={(event) => { setZip(event.target.value) }} placeholder={'enter zip code'} >
+        <TextField className={isDark && classes.input} name='value' value={zip} onChange={(event) => { setZip(event.target.value) }} placeholder={'enter zip code'} >
         </TextField>
         <Button type="submit" variant="contained">Search</Button>
 
