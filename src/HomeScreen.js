@@ -3,6 +3,8 @@ import { ThemeContext } from "./ThemeContext"
 import { makeStyles } from '@material-ui/core/styles';
 import { useContext } from 'react';
 import NavBar from './NavBar'
+import background from "./background.png";
+
 
 export default function HomeScreen() {
   const { isDark } = useContext(ThemeContext)
@@ -20,7 +22,8 @@ export default function HomeScreen() {
     else return (
       {
         root: {
-          backgroundColor: "beige", minHeight: "100vh"
+          backgroundColor: "beige", minHeight: "100vh",
+          backgroundImage: `url(${background})`
         },
       }
     )
@@ -30,28 +33,9 @@ export default function HomeScreen() {
   return (
     <div className={classes.root}>
       <NavBar />
-      <h1>Home</h1>
-      <h2> What would you like to do?</h2>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          justifyContent: "space-around",
-          alignItems: "space-between",
-        }}
-      >
-        <div>
-          <Link style={{ fontSize: 25 }} to="/weather">
-            Check Weather
-          </Link>
-        </div>
-        <div>
-          <Link style={{ fontSize: 25 }} to="/restaurants">
-            Search For Restaurants
-          </Link>
-        </div>
-      </div>
+      <div style={{ fontSize: 100, color: "yellow" }}>Food and Weather</div>
+      <h2 style={{ color: "white" }}> What would you like to do today?</h2>
+
     </div>
   );
 }

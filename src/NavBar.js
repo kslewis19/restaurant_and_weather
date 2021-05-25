@@ -29,7 +29,8 @@ export default function Navbar() {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        width: "30%"
+        width: "33%",
+        backgroundColor: "lightgray"
       }}
     >
       <Button color="primary"
@@ -40,7 +41,7 @@ export default function Navbar() {
       >
         Home
         </Button>
-      {location.pathname.includes("/restaurants") ? (
+      {!location.pathname.includes("/weather") ? (
         <Button color="primary"
           onClick={() => {
             cleanContext()
@@ -52,7 +53,7 @@ export default function Navbar() {
       ) : (
         <div> Check Weather</div>
       )}
-      {location.pathname.includes("/weather") ? (
+      {!location.pathname.includes("/restaurants") ? (
         <Button color="primary"
           onClick={() => {
             cleanContext()
