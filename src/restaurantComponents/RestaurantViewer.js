@@ -1,5 +1,5 @@
 import Button from '@material-ui/core/Button';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import RestaurantCard from './RestaurantCard'
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,7 +14,7 @@ import 'leaflet/dist/leaflet.css';
 import MapMarker from './MapMarker'
 import { TextField } from '@material-ui/core';
 import { Link } from "react-router-dom";
-
+import { ThemeContext } from "../ThemeContext"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +27,16 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: 'inline',
   },
+  text: {
+    color: "white"
+  },
+  input: {
+    '& .MuiInputBase-root': {
+      color: 'white',
+    },
+  },
+
+
 }));
 const API_KEY = process.env.REACT_APP_REST_API_KEY
 
@@ -39,6 +49,7 @@ function RestaurantViewer(props) {
   const [center, setCenter] = useState([props.lat, props.lng])
   const [zoom, setZoom] = useState(13)
   const [keyword, setKeyword] = useState("")
+  const { isDark } = useContext(ThemeContext)
 
   useEffect(fetchPlaces, // eslint-disable-next-line
     [type, radius, props.coords])
@@ -184,9 +195,10 @@ function RestaurantViewer(props) {
       </Button>
         </div>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="age-native-simple">Type</InputLabel>
+      <FormControl className={classes.text}>
+          <InputLabel className={isDark && classes.text} htmlFor="age-native-simple">Type</InputLabel>
           <Select
+            className={isDark && classes.text}
             native
             value={type}
             onChange={(e) => { setType(e.target.value) }}
@@ -203,9 +215,10 @@ function RestaurantViewer(props) {
           </Select>
         </FormControl>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="age-native-simple">Radius</InputLabel>
+      <FormControl >
+          <InputLabel className={isDark && classes.text} htmlFor="age-native-simple">Radius</InputLabel>
           <Select
+            className={isDark && classes.text}
             native
             value={radius}
             onChange={(e) => { setRadius(e.target.value) }}
@@ -222,7 +235,7 @@ function RestaurantViewer(props) {
             <option value={24140}>15 miles</option>
           </Select>
         </FormControl>
-        <TextField name='value' value={keyword} onChange={(event) => { setKeyword(event.target.value) }} placeholder={'search by keywords'} >
+        <TextField className={isDark && classes.input} name='value' value={keyword} onChange={(event) => { setKeyword(event.target.value) }} placeholder={'search by keywords'} >
         </TextField>
 
         <Button

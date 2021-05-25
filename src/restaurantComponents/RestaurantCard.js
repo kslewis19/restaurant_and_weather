@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: 'inline',
   },
+  text: {
+    color: "black"
+  }
 }));
 
 
@@ -41,6 +44,7 @@ function RestaurantCard(props) {
           <Avatar alt="Remy Sharp" variant="square" className={classes.square} src={props.image} />
         </ListItemAvatar>
         <ListItemText
+          className={classes.text}
           component={'span'}
           primary={props.name}
           secondary={

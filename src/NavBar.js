@@ -3,11 +3,20 @@ import { useLocation } from "react-router-dom";
 import { LocationContext } from "./LocationContext"
 import Button from '@material-ui/core/Button';
 import { useContext } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { ThemeContext } from "./ThemeContext"
 
 export default function Navbar() {
   const location = useLocation();
   const { zip, setZip, lat, setLat, lng, setLng, coords, setCoords } = useContext(LocationContext);
+  const { isDark, setIsDark } = useContext(ThemeContext)
   const history = useHistory()
+  const useStyles = makeStyles((theme) => ({
+    button: {
+      color: "gray"
+    }
+  }));
+  const classes = useStyles();
   const cleanContext = () => {
     setZip(0)
     setLat(null)
@@ -23,7 +32,7 @@ export default function Navbar() {
         width: "30%"
       }}
     >
-      <Button
+      <Button color="primary"
         onClick={() => {
           cleanContext()
           history.push("/")
@@ -32,7 +41,7 @@ export default function Navbar() {
         Home
         </Button>
       {location.pathname.includes("/restaurants") ? (
-        <Button
+        <Button color="primary"
           onClick={() => {
             cleanContext()
             history.push("/weather")
@@ -44,7 +53,7 @@ export default function Navbar() {
         <div> Check Weather</div>
       )}
       {location.pathname.includes("/weather") ? (
-        <Button
+        <Button color="primary"
           onClick={() => {
             cleanContext()
             history.push("/restaurants")
@@ -56,6 +65,15 @@ export default function Navbar() {
       ) : (
         <div> Search For Restaurants</div>
       )}
+      <Button color="primary"
+        onClick={() => {
+          console.log("toggle")
+          setIsDark(!isDark)
+
+        }}
+      >
+        Dark Mode Toggle
+        </Button>
     </div>
   );
 }
