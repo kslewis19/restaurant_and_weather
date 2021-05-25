@@ -35,7 +35,7 @@ export default function Navbar() {
         <Button
           onClick={() => {
             cleanContext()
-            history.push("/weather/null")
+            history.push("/weather")
           }}
         >
           Check Weather
@@ -47,7 +47,7 @@ export default function Navbar() {
         <Button
           onClick={() => {
             cleanContext()
-            history.push("/restaurants/null/null")
+            history.push("/restaurants")
 
           }}
         >

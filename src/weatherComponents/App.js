@@ -18,7 +18,7 @@ function App(props) {
   return (
     <div className="App" style={{ display: "flex", flexDirection: "column" }}>
       <NavBar />
-      {hasZip ? <WeatherViewer weather={weather} forcast={forcast} lat={lat} lng={lng} /> : <ZipCodeForm setHasZip={setHasZip} setWeather={setWeather} setForcast={setForcast} zip={zip} setZip={setZip} setLat={setLat} setLng={setLng} />}
+      {hasZip ? <WeatherViewer weather={weather} forcast={forcast} lat={lat} lng={lng} /> : <ZipCodeForm setHasZip={setHasZip} setWeather={setWeather} setForcast={setForcast} zip={zip} setZip={setZip} setLat={setLat} setLng={setLng} setCoords={setCoords} />}
     </div>
   );
 }

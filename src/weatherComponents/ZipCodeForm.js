@@ -42,6 +42,8 @@ function ZipCodeForm(props) {
     console.log(lat, lon)
     props.setLat(lat)
     props.setLng(lon)
+    const formated = lat + "," + lon
+    props.setCoords(formated)
     const url = new URL("https://api.openweathermap.org/data/2.5/onecall")
     url.searchParams.append("appid", API_KEY);
     url.searchParams.append("lat", lat)

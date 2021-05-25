@@ -15,12 +15,12 @@ export default function HomeScreen() {
         }}
       >
         <div>
-          <Link style={{ fontSize: 25 }} to="/weather/null/">
+          <Link style={{ fontSize: 25 }} to="/weather">
             Check Weather
           </Link>
         </div>
         <div>
-          <Link style={{ fontSize: 25 }} to="/restaurants/null/null">
+          <Link style={{ fontSize: 25 }} to="/restaurants">
             Search For Restaurants
           </Link>
         </div>

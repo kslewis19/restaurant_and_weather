@@ -12,8 +12,8 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/" component={HomeScreen} exact />
-          <Route path="/weather/:zip" component={WeatherApp} />
-          <Route path="/restaurants/:lat/:lng" component={RestaurantApp} />
+          <Route path="/weather/" component={WeatherApp} />
+          <Route path="/restaurants/" component={RestaurantApp} />
           <Route component={ErrorComponent} />
         </Switch>
       </div>

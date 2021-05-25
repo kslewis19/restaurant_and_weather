@@ -231,7 +231,7 @@ function RestaurantViewer(props) {
           className={classes.button}
 
         >
-          <Link to={`/weather/${props.zip}`}> Check Weather Here </Link>
+          <Link to={"/weather"}> Check Weather Here </Link>
 
         </Button>
       </div>

@@ -46,7 +46,7 @@ function WeatherViewer(props) {
                     variant="contained"
                     color="default"
                 >
-                    <Link to={`/restaurants/${props.lat}/${props.lng}`}> Find Restaurants Here </Link>
+                    <Link to={`/restaurants`}> Find Restaurants Here </Link>
                 </Button>
                 <br />
                 {isDaily ? daily : hourly}
