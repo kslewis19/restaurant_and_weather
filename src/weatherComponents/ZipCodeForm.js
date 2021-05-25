@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 
@@ -61,6 +61,7 @@ function ZipCodeForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault()
     console.log("zip submited ", zip)
+    props.setZip(zip)
     fetchWeather(zip)
 
 

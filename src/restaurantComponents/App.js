@@ -1,20 +1,19 @@
 import "./App.css";
 import RestaurantViewer from "./RestaurantViewer";
 import AddressForm from "./AddressForm";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 import NavBar from "../NavBar.js";
+import { LocationContext } from "../LocationContext"
 
 
 function App(props) {
   const [hasAdd, setHasAdd] = useState(false);
-  const [coords, setCoords] = useState(`${props.match.params.lat},${props.match.params.lng}`);
-  const [lat, setLat] = useState(props.match.params.lat);
-  const [lng, setLng] = useState(props.match.params.lng);
-  const [zip, setZip] = useState(0)
+  const { zip, setZip, lat, setLat, lng, setLng, coords, setCoords } = useContext(LocationContext);
+
 
   useEffect(() => {
-    if (lat != "null") setHasAdd(true)
+    if (lat != null) setHasAdd(true)
   }, [])
   return (
     <div
