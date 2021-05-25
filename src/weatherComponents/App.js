@@ -15,19 +15,15 @@ function App(props) {
   const [hasZip, setHasZip] = useState(false)
   const { zip, setZip, lat, setLat, lng, setLng, coords, setCoords } = useContext(LocationContext);
 
-
-
   const { isDark } = useContext(ThemeContext)
-  const useStyles = makeStyles((theme) => {
+  const useStyles = makeStyles(() => {
     if (isDark) {
       return (
-
         {
           root: {
             backgroundColor: "black", minHeight: "100vh",
             color: "white"
           },
-
         })
     }
     else return (
@@ -35,7 +31,6 @@ function App(props) {
         root: {
           backgroundColor: "beige", minHeight: "100vh"
         },
-
       }
     )
   });
