@@ -11,7 +11,7 @@ import { ThemeContext } from "../ThemeContext"
 function App(props) {
   const [hasAdd, setHasAdd] = useState(false);
   const { zip, setZip, lat, setLat, lng, setLng, coords, setCoords } = useContext(LocationContext);
-  const { isDark, setIsDark } = useContext(ThemeContext)
+  const { isDark } = useContext(ThemeContext)
 
   const useStyles = makeStyles((theme) => {
     if (isDark) {

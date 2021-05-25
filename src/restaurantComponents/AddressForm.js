@@ -1,15 +1,25 @@
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
-import { useEffect, useState } from 'react';
+import { useState, useContext } from 'react';
 import './App.css';
-import { RoomSharp } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/core/styles';
+import { ThemeContext } from "../ThemeContext"
 
 const API_KEY = process.env.REACT_APP_REST_API_KEY
 
+const useStyles = makeStyles((theme) => ({
+    input: {
+        '& .MuiInputBase-root': {
+            color: 'white',
+        },
+    },
+
+
+}));
 function AddressForm(props) {
-
+    const classes = useStyles();
     const [address, setAddress] = useState("")
-
+    const { isDark } = useContext(ThemeContext)
 
 
     const handleSubmit = (event) => {
@@ -44,7 +54,7 @@ function AddressForm(props) {
         <div className="Address">
             <h2> Please enter your address bellow to search for restaurants near you</h2>
             <form method="post" onSubmit={handleSubmit}>
-                <TextField name='value' value={address} onChange={(event) => { setAddress(event.target.value) }} placeholder={'enter address'} >
+                <TextField className={isDark && classes.input} name='value' value={address} onChange={(event) => { setAddress(event.target.value) }} placeholder={'enter address'} >
                 </TextField>
                 <Button type="submit" variant="contained">Search</Button>
             </form>
